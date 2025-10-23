@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Titillium Web", sans-serif;
+}
+
+.big-center {
+  font-weight: "Black 900";
+}
+.titulos_webs {
+  font-weight: "900";
+}
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbarcuadradostyle {
+  color: #ffff00;
+}
+
+/* .shadow-neon {
+  background: #ffffff;
+  width: 300px;
+  height: 2px;
+  box-shadow: 0 0 7px 100px #ff1493, 0 0 7px 10px #ff1493;
+} */
+.imgemenostop {
+  margin-top: -80px;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-zoomIn {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+.hidden-section {
+  opacity: 0;
+}
+.navCard:hover {
+  box-shadow: 0px -24px 30px 10px rgba(255, 255, 3, 0.8);
+}
+
+.navCardBottom:hover {
+  box-shadow: 0px 24px 30px 10px rgba(255, 255, 3, 0.8);
+}
+
+/* Asegurar que los enlaces internos no hereden efectos no deseados */
+.navCard a,
+.navCardBottom a {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Estilos para los enlaces dentro de los cuadros (opcional) */
+.navCard .linkContainer a {
+  transition: all 0.2s ease-in-out;
+}
+
+.navCard .linkContainer a:hover {
+  text-decoration: underline;
+  transform: translateX(5px);
+}
