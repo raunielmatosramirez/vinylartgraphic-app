@@ -18,23 +18,22 @@ export default function Home() {
 
   return (
     <>
-    <div className='fixed w-full flex items-center justify-center z-10 h-full'>
-      {!isAtTop ?  (
-        <div className="w-[600px] h-[700px] bg-[url('/lion-desenfoque.png')] bg-cover bg-center bg-no-repeat"></div>
-
-      ):(
-        ""
-      )
-      
-    }
-          </div>
+      <div className='fixed w-full flex items-center justify-center z-10 h-full'>
+        {!isAtTop ? (
+          <div className="w-[600px] h-[700px] bg-[url('/lion-desenfoque.png')] bg-cover bg-center bg-no-repeat"></div>
+        ) : (
+          ""
+        )}
+      </div>
       <main className='relative z-10 backdrop-blur-sm animate-fadeInUp'>
-        {isAtTop  ? (
-           <section className='w-full h-screen flex items-center justify-center'>
-            <LionComponent/>
+        {isAtTop ? (
+          <section className='w-full h-screen flex items-center justify-center'>
+            <LionComponent />
           </section>
-          ):""}      
-      
+        ) : (
+          ""
+        )}
+
         <section
           id='hero-section'
           className='w-full flex flex-col items-center justify-center h-[fit-content] mb-[80px] relative overflow-x-hidden'
