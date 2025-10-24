@@ -1,14 +1,16 @@
-"use client";
-import HeaderSection from "../../Components/HeaderSection"; // Ajusta la ruta según tu estructura
-import { useParams } from "next/navigation";
-import ServicesCard  from "../../Components/ServicesCard";
 
-const ServicesDetail = () => {
-  const { serviceName } = useParams();
 
-  const services = [
+
+// app/services/[serviceName]/page.tsx
+import Link from "next/link";
+import HeaderSection from "../../Components/HeaderSection";
+import ServicesCard from "../../Components/ServicesCard";
+
+
+const services = [
     {
       service: "PROMO ITEMS",
+      slug: "promo-items",
       subservices: [
         {
           name: "High-Quality T-Shirt Printing",
@@ -68,6 +70,7 @@ const ServicesDetail = () => {
     },
     {
       service: "CAR WRAP",
+      slug: "car-wrap",
       subservices: [
         {
           name: "Professional Vehicle Wrapping & Graphics",
@@ -91,6 +94,7 @@ const ServicesDetail = () => {
     },
     {
       service: "CUSTOM SIGNS MARKERS",
+      slug: "custom-signs-markers",
       subservices: [
         {
           name: "Impactful Light boxes & Blade Signs",
@@ -263,6 +267,7 @@ const ServicesDetail = () => {
     },
     {
       service: "PRINTS",
+      slug: "prints",
       subservices: [
         {
           name: "Professional Business Cards",
@@ -344,6 +349,7 @@ const ServicesDetail = () => {
     },
     {
       service: "WIDE FORMAT SIGNS AND BANNERS",
+      slug: "wide-format-signs-and-banners",
       subservices: [
         {
           name: "Micro-Perf Adhesive Vinyl",
@@ -520,11 +526,25 @@ const ServicesDetail = () => {
     },
   ];
 
+
+// Generate static params for all service slugs
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    serviceName: service.slug,
+  }));
+}
+
+interface PageProps {
+  params: Promise<{ serviceName: string }>;
+}
+
+// Server component - no "use client" needed
+export default async function ServicesDetail({ params }: PageProps) {
+  const { serviceName } = await params;
+
   const currentService = services.find(
-    (service) =>
-       service.service.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and") === serviceName
+    (service) => service.slug === serviceName
   );
-  console.log(currentService)
 
   if (!currentService) {
     return (
@@ -536,12 +556,12 @@ const ServicesDetail = () => {
           <p className='text-lg text-gray-600 mb-6'>
             Lo sentimos, el servicio que buscas no está disponible.
           </p>
-          <a
+          <Link
             href='/'
-            className='bg-yellow-500 text-white px-6 py-1  transition duration-300'
+            className='bg-yellow-500 text-white px-6 py-1 transition duration-300'
           >
             Volver a Servicios
-          </a>
+          </Link>
         </div>
       </section>
     );
@@ -551,25 +571,23 @@ const ServicesDetail = () => {
     <>
       <section className='flex flex-col items-center justify-center text-center'>
         <HeaderSection
-          title={currentService?.service}
+          title={currentService.service}
           text='ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae debitis deleniti dignissimos.'
         />
         <div
           style={{ maxWidth: "1100px" }}
           className='grid grid-cols-1 mx-4 md:grid-cols-3 mt-5 lg:grid-cols-5 gap-3'
         >
-          {currentService?.subservices.map((subservice, index) => (
-             <ServicesCard
-                key={index}
-              //  imageUrl={subservice?.image_url}
-               title={subservice?.name}
-              //  alt='bla'
-             />
+          {currentService.subservices.map((subservice, index) => (
+            <ServicesCard
+              key={index}
+              alt={subservice.name}
+              imageUrl ={subservice.image_url}
+              title={subservice.name}
+            />
           ))}
         </div>
       </section>
     </>
   );
-};
-
-export default ServicesDetail;
+}
