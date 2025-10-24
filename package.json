@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "vercel-build": "next build"
 
   },
   "dependencies": {
@@ -28,5 +29,14 @@
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "vercel": {
+    "buildCommand": "next build",
+    "installCommand": "pnpm install",
+    "allowedBuilds": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
