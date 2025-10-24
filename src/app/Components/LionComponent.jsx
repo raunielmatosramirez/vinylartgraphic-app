@@ -875,10 +875,10 @@ export default function LionComponent() {
         >
           <directionalLight position={[1, 1500, 1240]} intensity={10} />
           <Suspense fallback={null}>
-            {/* <LionController
+            <LionController
               isMouseInViewport={isMouseInViewport}
               mousePosition={mousePosition}
-            /> */}
+            />
           </Suspense>
         </Canvas>
         <div className='absolute font-bold bottom-1 left-1/2 mt-1.5 z-5 transform -translate-x-1/2 text-center text-white text-[48px] w-full'>
@@ -893,9 +893,8 @@ export default function LionComponent() {
             />
           </div>
           <div className='relative mt-4 w-full flex  bg-opacity-100 justify-center'>
-            <div className='w-36 bg-pink-500 h-[25px] font-normal text-white text-[15px] flex items-center justify-center'>
-              scroll to find more
-            </div>
+           
+            <Image src="./HOMEScrolltofindmore .svg" width={200} height={50} alt="Scroll to find more"/>
           </div>
         </div>
       </section>
