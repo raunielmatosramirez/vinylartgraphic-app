@@ -527,7 +527,6 @@ const services = [
   ];
 
 
-// Generate static params for all service slugs
 export async function generateStaticParams() {
   return services.map((service) => ({
     serviceName: service.slug,
